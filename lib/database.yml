@@ -1,0 +1,17 @@
+shared: &shared
+  adapter: mysql2
+  host: localhost
+  port: 3306
+  database: rosette
+  username: rosette
+  password: rosette-dev
+  pool: 32
+
+development:
+  <<: *shared
+
+production:
+  <<: *shared
+
+test:
+  <<: *shared
