@@ -17,6 +17,7 @@ gem 'rosette-serializer-yaml',            github: 'rosette-proj/rosette-serializ
 gem 'rosette-server',                     github: 'rosette-proj/rosette-server'
 gem 'rosette-server-github',              github: 'rosette-proj/rosette-server-github'
 gem 'rosette-test-helpers',               github: 'rosette-proj/rosette-test-helpers'
+gem 'rosette-tms-filestore',              github: 'rosette-proj/rosette-tms-filestore'
 
 group :development, :test do
   gem 'expert', '~> 1.0'

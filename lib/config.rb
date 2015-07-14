@@ -7,6 +7,7 @@ require 'rosette/extractors/yaml-extractor'
 require 'rosette/preprocessors/normalization-preprocessor'
 require 'rosette/queuing/resque-queue'
 require 'rosette/serializers/yaml-serializer'
+require 'rosette/tms/filestore-tms'
 require 'rosette/test-helpers'
 require 'yaml'
 
@@ -19,9 +20,11 @@ module RosetteConfig
       config.add_repo('rosette-demo-rails-app') do |repo|
         repo.set_path(File.join(workspace, 'rosette-demo-rails-app/.git'))
         repo.set_description('A test Rails app for demonstration purposes.')
-        repo.add_locales(%w(es de-DE))
+        repo.add_locales(%w(en-PL en-LC))  # pig latin and lolcat
 
-        repo.use_tms('test')
+        repo.use_tms('filestore') do |tms_config|
+          tms_config.set_store_path(tms_store_path)
+        end
 
         repo.add_extractor('yaml/rails') do |extractor|
           extractor.set_conditions do |cond|
@@ -36,6 +39,10 @@ module RosetteConfig
         end
       end
     end
+  end
+
+  def self.tms_store_path
+    @tms_store_path ||= File.expand_path('../../tms-store', __FILE__)
   end
 
   def self.workspace

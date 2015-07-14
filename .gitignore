@@ -3,3 +3,4 @@ Gemfile.lock
 coverage/
 classpath.txt
 workspace/**/*
+tms-store/**/*

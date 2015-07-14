@@ -26,7 +26,7 @@ resque_server = Rack::Builder.new do
 end
 
 api_server = Rosette::Server::ApiV1.new(RosetteConfig.config)
-github_server = Rosette::Server::Github.new(rosette_config, {
+github_server = Rosette::Server::Github.new(RosetteConfig.config, {
   github_webhook_secret: ENV['GITHUB_WEBHOOK_SECRET']
 })
 
