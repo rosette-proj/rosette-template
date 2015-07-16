@@ -4,3 +4,4 @@ coverage/
 classpath.txt
 workspace/**/*
 tms-store/**/*
+.env

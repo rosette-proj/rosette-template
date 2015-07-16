@@ -6,6 +6,9 @@ java_import java.lang.System
 require 'expert'
 Expert.environment.require_all
 
+require 'dotenv'
+Dotenv.load
+
 require 'logger'
 require 'rosette/core'
 Rosette.env = ENV['ROSETTE_ENV'] || System.getProperty('ROSETTE_ENV') || 'development'

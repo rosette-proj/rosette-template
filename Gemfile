@@ -19,6 +19,11 @@ gem 'rosette-server-github',              github: 'rosette-proj/rosette-server-g
 gem 'rosette-test-helpers',               github: 'rosette-proj/rosette-test-helpers'
 gem 'rosette-tms-filestore',              github: 'rosette-proj/rosette-tms-filestore'
 
+group :development do
+  gem 'dotenv'
+  gem 'foreman'
+end
+
 group :development, :test do
   gem 'expert', '~> 1.0'
   gem 'pry', '~> 0.9.0'
