@@ -20,7 +20,9 @@ module RosetteConfig
 
       # Use resque as the commit processing queue. Provided by the
       # rosette-queue-resque gem.
-      config.use_queue('resque')
+      config.use_queue('resque') do |resque_config|
+        resque_config.set_queue_options(redis_config_for_env)
+      end
 
       # Add a repo. The name passed in here is how Rosette will refer to this
       # repo, and should be unique.
@@ -85,9 +87,19 @@ module RosetteConfig
     database_config[Rosette.env]
   end
 
+  def self.redis_config_for_env
+    redis_config[Rosette.env]
+  end
+
   def self.database_config
     @database_config ||= YAML.load_file(
       File.expand_path('../database.yml', __FILE__)
+    )
+  end
+
+  def self.redis_config
+    @redis_config ||= YAML.load_file(
+      File.expand_path('../redis.yml', __FILE__)
     )
   end
 end

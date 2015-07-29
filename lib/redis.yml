@@ -1,0 +1,13 @@
+shared: &shared
+  host: localhost
+  port: 6379
+  namespace: rosette
+
+development:
+  <<: *shared
+
+production:
+  <<: *shared
+
+test:
+  <<: *shared

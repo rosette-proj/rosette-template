@@ -21,16 +21,8 @@ namespace :resque do
 
   def worker
     @worker ||= Rosette::Queuing::ResqueQueue::Worker.new(
-      RosetteConfig.config, Rosette.logger, queue_options
+      RosetteConfig.config, Rosette.logger,
+      RosetteConfig.config.queue.configurator.queue_options
     )
-  end
-
-  def queue_options
-    @queue_options ||= {
-      redis: {
-        url: 'redis://127.0.0.1:6379',
-        namespace: 'rosette'
-      }
-    }
   end
 end
